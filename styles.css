@@ -782,3 +782,31 @@ footer {
 .workspace-banner img:hover{
     transform:scale(1.02);
 }
+/* ===== Mobile Hero Fix ===== */
+
+@media (max-width:900px){
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-photo-wrap{
+        width:300px;
+        margin:40px auto 0;
+        display:grid;
+        place-items:center;
+    }
+
+    .hero-photo{
+        width:220px;
+        height:220px;
+        display:block;
+        object-fit:cover;
+        object-position:center 28%;
+    }
+
+    .floating-skill{
+        display:none;
+    }
+}
