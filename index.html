@@ -258,11 +258,46 @@ GROUP BY 1;</pre></div>
           <a href="https://www.instagram.com/its.__shubham__?igsh=eXJnd2VhcHBmMXdv" target="_blank"><i class="fa-brands fa-instagram"></i>@its.__shubham__</a>
         </div>
       </div>
-      <form class="panel contact-form reveal" id="contactForm">
-        <input type="text" id="name" placeholder="Your name" required />
-        <input type="email" id="email" placeholder="Your email" required />
-        <textarea id="message" rows="6" placeholder="Project or opportunity details" required></textarea>
-        <button type="submit" class="btn btn-primary">Send message</button>
+<form class="panel contact-form reveal" id="contactForm">
+
+  <input type="hidden" name="access_key" value="92e4d00b-fead-4de8-a6df-fdcee43cf585">
+
+  <input type="hidden" name="subject" value="New Portfolio Contact Message">
+
+  <input type="hidden" name="from_name" value="Shubham Pawase Portfolio">
+
+  <input type="checkbox" name="botcheck" style="display:none;">
+
+  <input
+    type="text"
+    id="name"
+    name="name"
+    placeholder="Your name"
+    required>
+
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="Your email"
+    required>
+
+  <textarea
+    id="message"
+    name="message"
+    rows="6"
+    placeholder="Project or opportunity details"
+    required></textarea>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    id="submitBtn">
+    Send message
+  </button>
+
+  <p id="formResult"></p>
+
       </form>
     </section>
   </main>
