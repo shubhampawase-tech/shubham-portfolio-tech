@@ -761,3 +761,24 @@ footer {
   .workspace-setup{grid-template-columns:1fr}
   .m5{grid-column:auto}
 }
+.workspace-section{
+    margin-top:80px;
+}
+
+.workspace-banner{
+    margin-top:30px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+}
+
+.workspace-banner img{
+    width:100%;
+    display:block;
+    border-radius:20px;
+    transition:.4s;
+}
+
+.workspace-banner img:hover{
+    transform:scale(1.02);
+}
