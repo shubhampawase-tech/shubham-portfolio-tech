@@ -197,6 +197,7 @@ if (year) {
 
 }
 // ==============================
+// ==============================
 // Contact Form (Web3Forms)
 // ==============================
 
@@ -205,61 +206,47 @@ const submitBtn = document.getElementById("submitBtn");
 const formResult = document.getElementById("formResult");
 
 if (contactForm && submitBtn && formResult) {
-    contactForm.addEventListener("submit", async (e) => {
-
-        e.preventDefault();
+    contactForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
         submitBtn.disabled = true;
-        submitBtn.innerText = "Sending...";
-
-        formResult.innerHTML = "";
+        submitBtn.textContent = "Sending...";
+        formResult.textContent = "";
+        formResult.style.color = "";
 
         const formData = new FormData(contactForm);
 
-        const object = Object.fromEntries(formData);
-
-        const json = JSON.stringify(object);
-
         try {
-
             const response = await fetch(
                 "https://api.web3forms.com/submit",
                 {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
-                    body: json
+                    body: formData
                 }
             );
 
             const result = await response.json();
 
+            console.log("Web3Forms response:", result);
+
             if (result.success) {
-
+                formResult.textContent = "✅ Message sent successfully!";
                 formResult.style.color = "#4ade80";
-                formResult.innerHTML = "✅ Message sent successfully.";
-
                 contactForm.reset();
-
             } else {
-
+                formResult.textContent =
+                    "❌ " + (result.message || "Message could not be sent.");
                 formResult.style.color = "#ef4444";
-                formResult.innerHTML = "❌ Failed to send message.";
-
             }
+        } catch (error) {
+            console.error("Form error:", error);
 
-        } catch (err) {
-
+            formResult.textContent =
+                "❌ Network error. Please try again.";
             formResult.style.color = "#ef4444";
-            formResult.innerHTML = "❌ Network error.";
-
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Send message";
         }
-
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Send message";
-
     });
-
 }
